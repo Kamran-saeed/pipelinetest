@@ -5,10 +5,16 @@ phases:
       python: 3.7
   build:
     commands:
-      - echo 'hello world'
-      - echo 'this is version 1'
-      - echo $PROJECT
-      #- aws codepipeline start-pipeline-execution --name $PROJECT-frontend-$STAGE-pipeline
+      - echo 'starting build phase'
+      - aws codepipeline start-pipeline-execution --name $PROJECT-auth-backend-$STAGE-pipeline
+      - aws codepipeline start-pipeline-execution --name $PROJECT-collectionmanagement-backend-$STAGE-pipeline
+      - aws codepipeline start-pipeline-execution --name $PROJECT-datalake-backend-$STAGE-pipeline
+      - aws codepipeline start-pipeline-execution --name $PROJECT-datarequest-backend-$STAGE-pipeline
+      - aws codepipeline start-pipeline-execution --name $PROJECT-datasourcemanagement-backend-$STAGE-pipeline
+      - aws codepipeline start-pipeline-execution --name $PROJECT-notificationmanagement-backend-$STAGE-pipeline
+      - aws codepipeline start-pipeline-execution --name $PROJECT-reportmanagement-backend-$STAGE-pipeline
+      - aws codepipeline start-pipeline-execution --name $PROJECT-sitemanagement-backend-$STAGE-pipeline
+      - aws codepipeline start-pipeline-execution --name $PROJECT-usermanagement-backend-$STAGE-pipeline
   post_build:
     commands:
       - echo 'post build phases executed successfully'
