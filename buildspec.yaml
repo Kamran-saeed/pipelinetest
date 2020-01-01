@@ -7,7 +7,9 @@ phases:
     commands:
       - echo 'hello world'
       - echo 'this is version 1'
-      - echo ${PROJECT,,}
+      - x=$PROJECT
+      - echo $x
+      - echo ${x,,}
       #- aws codepipeline start-pipeline-execution --name $PROJECT-frontend-$STAGE-pipeline
   post_build:
     commands:
